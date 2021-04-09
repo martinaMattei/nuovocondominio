@@ -1,5 +1,5 @@
 package it.exolab.model;
 
-public class Prova {
+public class prova {
 
 }
