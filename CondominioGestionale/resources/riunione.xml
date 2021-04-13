@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="it.exolab.ecommerce.mapper.RiunioneMapper">
+
+	<insert id="insert" parameterType="it.exolab.model.Riunione"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into
+		riunione(id_palazzina, id_votazione, data, motivazione,
+		n_verbale)
+		values (#{id_palazzina}
+		, #{id_votazione}
+		, #{data}
+		, #{motivazione}
+		,
+		#{n_verbale}
+		)
+
+	</insert>
+
+
+
+
+	<update id="update" parameterType="it.exolab.model.Riunione">
+		update riunione set
+		id_palazzina=#{id_palazzina}
+		,id_votazione= #{id_votazione}
+		,data=#{data}
+		,motivazione=#{motivazione}
+		,n_verbale=#{n_verbale}
+		where
+		id = #{id}
+
+	</update>
+
+
+
+
+	<delete id="delete" parameterType="int">
+		delete from riunione where id
+		= #{id}
+	</delete>
+
+
+
+
+	<select id="find" resultType="it.exolab.model.Riunione"
+		parameterType="int">
+		SELECT * FROM riunione where id = #{id}
+	</select>
+
+
+	<select id="findAll" resultType="it.exolab.model.Riunione">
+		SELECT * FROM riunioni
+	</select>
+</mapper>
