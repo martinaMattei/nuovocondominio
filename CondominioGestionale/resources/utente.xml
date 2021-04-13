@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="it.exolab.mapper.UtenteMapper">
+
+	<resultMap type="Utente" id="utenteNomeRuolo">
+
+		<result property="id" column="id" />
+		<result property="nome" column="nome" />
+		<result property="cognome" column="cognome" />
+		<result property="telefono" column="telefono" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="carta_identita" column="carta_identita" />
+		<result property="id_ruolo" column="id_ruolo" />
+		<result property="id_palazzina" column="id_palazzina" />
+
+		<association property="ruolo" javaType="Ruolo">
+			<id property="id" column="id_ruolo" />
+			<result property="id" column="ruolo_id" />
+			<result property="nome" column="ruolo_nome" />
+		</association>
+	</resultMap>
+
+	<resultMap type="Utente" id="utenteNomePalazzo">
+
+		<result property="id" column="id" />
+		<result property="nome" column="nome" />
+		<result property="cognome" column="cognome" />
+		<result property="telefono" column="telefono" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="carta_identita" column="carta_identita" />
+		<result property="id_ruolo" column="id_ruolo" />
+		<result property="id_palazzina" column="id_palazzina" />
+
+		<association property="palazzina" javaType="Palazzina">
+			<id property="id" column="id_palazzina" />
+			<result property="id" column="palazzina_id" />
+			<result property="nome" column="palazzina_nome" />
+		</association>
+	</resultMap>
+
+
+	<insert id="insert" parameterType="Utente"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into utenti
+		(nome, cognome, telefono, email, password, carta_identita, id_ruolo,
+		id_palazzina) values (#{nome}
+		, #{cognome}
+		, #{email}
+		, #{password}
+		,
+		#{carta_identita}
+		,#{id_ruolo}
+		,#{id_palazzina}
+		)
+
+	</insert>
+
+
+
+	<update id="update" parameterType="Utente">
+		update utenti set nome=#{nome}
+		,cognome= #{cognome}
+		,email=#{email}
+		,password=#{password}
+		,carta_identita=#{carta_identita}
+		,id_ruolo=#{id_ruolo}
+		,id_palazzina=#{id_palazzina} where id = #{id}
+
+	</update>
+
+
+
+
+	<delete id="delete" parameterType="int">
+		delete from utenti where id =
+		#{id}
+	</delete>
+
+
+
+
+	<select id="find" parameterType="int">
+		SELECT * FROM utenti where
+		id =
+		#{id}
+	</select>
+
+
+	<select id="findAll" resultType="Utente">
+		SELECT * FROM utenti
+	</select>
+
+
+	<select id="findByEmailPassword" parameterType="Utente">
+		SELECT *
+		FROM utenti where email = #{email} and password =
+		#{password}
+	</select>
+
+
+
+
+	<select id="findByNomeRuolo" resultMap="uteneNomeRuolo">
+		SELECT
+		u.nome,u.cognome,r.nome as ruolo_nome,r.id as ruolo_id
+		from utenti u
+		inner join ruolo r
+		on u.id_ruolo=r.id
+		order by r.id asc
+	</select>
+	<select id="findByNomePalazzo" resultMap="utenteNomePalazzo">
+		SELECT
+		u.nome,u.cognome,p.nome as palazzina_nome,p.id as palazzina_id
+		from
+		utenti u
+		inner join palazzina p
+		ON u.id_palazzina = p.id
+		order by
+		palazzina_id asc
+	</select>
+
+
+
+</mapper>

@@ -20,11 +20,10 @@
 
 	
    <mappers>
-      <mapper resource = "user.xml"/>
-      <mapper resource = "prodotto.xml"/>
-      <mapper resource = "carrello.xml"/>
-      <mapper resource = "ordini.xml"/>
-      <mapper resource = "rigaordine.xml"/>
+      <mapper resource = "utente.xml"/>
+      <mapper resource = "ruolo.xml"/>
+      <mapper resource = "admin.xml"/>
+      
    </mappers>
    
    
