@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="it.exolab.ecommerce.mapper.PreventivoMapper">
+
+	<insert id="insert" parameterType="it.exolab.model.Preventivo"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into preventivi(id_riunione, id_utente, id_admin, testo) values
+		(#{id_riunione}
+		, #{id_utente}
+		, #{id_admin}
+		, #{testo}
+		)
+
+	</insert>
+
+
+
+	<update id="update" parameterType="it.exolab.model.Preventivo">
+		update preventivi set id_riunione=#{id_riunione}
+		,id_utente= #{id_utente}
+		,id_admin=#{id_admin}
+		,testo=#{testo}
+		where id = #{id}
+
+	</update>
+
+
+
+
+	<delete id="delete" parameterType="int">
+		delete from preventivi where id = #{id}
+	</delete>
+
+
+
+
+	<select id="find"
+		resultType="it.exolab.model.Preventivi" parameterType="int">
+		SELECT * FROM preventivi where id = #{id}
+	</select>
+
+
+	<select id="findAll"
+		resultType="it.exolab.model.Preventivi">
+		SELECT * FROM preventivi
+	</select>
+</mapper>

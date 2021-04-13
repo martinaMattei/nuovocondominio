@@ -13,7 +13,7 @@
 	         <property name = "driver" value = "com.mysql.jdbc.Driver"/>
 	         <property name = "url" value = "jdbc:mysql://localhost:3306/condominio"/>
 	         <property name = "username" value = "root"/>
-	         <property name = "password" value = "martina"/>
+	         <property name = "password" value = ""/>
 	      </dataSource>            
 	   </environment>
 	</environments>
@@ -21,8 +21,12 @@
 	
    <mappers>
       <mapper resource = "utente.xml"/>
-      <mapper resource = "ruolo.xml"/>
       <mapper resource = "admin.xml"/>
+      <mapper resource = "palazzina.xml"/>
+      <mapper resource = "preventivo.xml"/>
+      <mapper resource = "riunione.xml"/>
+       <mapper resource = "ruolo.xml"/>
+      <mapper resource = "votazione.xml"/>
       
    </mappers>
    

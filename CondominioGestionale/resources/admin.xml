@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="it.exolab.mapper.AdminMapper">
+  
+ <select id="findByEmailAndPassword" resultType="it.exolab.model.Admin" parameterType="it.exolab.model.Admin">
+		SELECT * FROM admin where email = #{email} and password = #{password}
+	</select>
+		
+		
+	<select id = "find" resultType = "it.exolab.model.Prodotto" parameterType="int">
+		   SELECT * FROM admin  where id = #{id}
+		</select>
+		
+		</mapper>

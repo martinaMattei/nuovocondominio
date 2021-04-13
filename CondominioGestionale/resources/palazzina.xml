@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="it.exolab.ecommerce.mapper.PalazzinaMapper">
+	
+	<insert id = "insert"
+	parameterType="it.exolab.model.Palazzina" 
+	useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		   insert into palazzina(nome) values (#{nome}
+		   )
+		   
+		</insert>
+		
+		
+		
+	<update id = "update"
+	parameterType="it.exolab.model.Palazzina">
+		   update prodotto set nome=#{nome}
+		   where id = #{id}
+		   
+		</update>
+		
+		
+		
+		
+		<delete id = "delete" parameterType="int" >
+		   delete from palazzina where id = #{id}
+		</delete>
+		
+	
+	<select id = "findByNome" resultType = "it.exolab.model.Palazzina" 
+	parameterType="it.exolab.model.Palazzina">
+		   SELECT * FROM palazzina  where nome = #{nome}
+		</select>
+		
+		
+	<select id = "find" resultType = "it.exolab.model.Palazzina" parameterType="int">
+		   SELECT * FROM palazzina  where id = #{id}
+		</select>
+		
+		
+	  <select id = "findAll" resultType = "it.exolab.model.Palazzina">
+		   SELECT * FROM palazzina 
+		</select>
+</mapper>

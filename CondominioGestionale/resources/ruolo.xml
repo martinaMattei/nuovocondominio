@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="it.exolab.mapper">
+<mapper namespace="it.exolab.mapper.Ruolo">
 	<insert id="insert" parameterType="Ruolo"
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		insert into ruolo (nome) values (#{nome})
