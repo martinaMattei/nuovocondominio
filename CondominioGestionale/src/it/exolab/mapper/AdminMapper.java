@@ -1,6 +1,7 @@
 package it.exolab.mapper;
 
 import it.exolab.model.Admin;
+import it.exolab.model.Utente;
 
 public interface AdminMapper {
 	

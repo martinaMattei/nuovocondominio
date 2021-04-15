@@ -1,14 +1,17 @@
 package it.exolab.model;
 
+import java.sql.Timestamp;
+
 public class Riunione {
 	 private int id;
 	 private int id_palazzina;
 	 private int id_votazione;
-	 private String data;
+	 private Timestamp data;
 	 private String motivazione;
 	 private int n_verbale;
 	 Palazzina palazzina;
 	 Votazione votazione;
+	 
 	public int getId() {
 		return id;
 	}
@@ -27,10 +30,10 @@ public class Riunione {
 	public void setId_votazione(int id_votazione) {
 		this.id_votazione = id_votazione;
 	}
-	public String getData() {
+	public Timestamp getData() {
 		return data;
 	}
-	public void setData(String data) {
+	public void setData(Timestamp data) {
 		this.data = data;
 	}
 	public String getMotivazione() {
@@ -57,7 +60,7 @@ public class Riunione {
 	public void setVotazione(Votazione votazione) {
 		this.votazione = votazione;
 	}
-	public Riunione(int id, int id_palazzina, int id_votazione, String data, String motivazione, int n_verbale,
+	public Riunione(int id, int id_palazzina, int id_votazione, Timestamp data, String motivazione, int n_verbale,
 			Palazzina palazzina, Votazione votazione) {
 		super();
 		this.id = id;
@@ -72,6 +75,14 @@ public class Riunione {
 	public Riunione() {
 		super();
 	}
+
+	public Riunione(String motivazione, Timestamp data, int id_palazzina ) {
+		super();
+		this.motivazione = motivazione;
+		this.data = data;
+		this.id_palazzina = id_palazzina;
+	}
+	
 	@Override
 	public String toString() {
 		return "Riunione [id=" + id + ", id_palazzina=" + id_palazzina + ", id_votazione=" + id_votazione + ", data="

@@ -38,13 +38,13 @@
 
 
 	<select id="find"
-		resultType="it.exolab.model.Preventivi" parameterType="int">
+		resultType="it.exolab.model.Preventivo" parameterType="int">
 		SELECT * FROM preventivi where id = #{id}
 	</select>
 
 
 	<select id="findAll"
-		resultType="it.exolab.model.Preventivi">
+		resultType="it.exolab.model.Preventivo">
 		SELECT * FROM preventivi
 	</select>
 </mapper>

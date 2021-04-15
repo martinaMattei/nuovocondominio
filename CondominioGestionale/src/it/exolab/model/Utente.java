@@ -12,8 +12,35 @@ public class Utente {
 	private byte[] carta_identita;
 	private int id_ruolo;
 	private int id_palazzina;
-	Ruolo ruolo;
-	Palazzina palazzina;
+	private Palazzina palazzina ;
+	private Ruolo ruolo;
+	
+	public Utente(String nome, String cognome, String telefono, String email, String password, byte[] carta_identita,
+			int id_ruolo, int id_palazzina, Palazzina palazzina, Ruolo ruolo) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.telefono = telefono;
+		this.email = email;
+		this.password = password;
+		this.carta_identita = carta_identita;
+		this.id_ruolo = id_ruolo;
+		this.id_palazzina = id_palazzina;
+		this.palazzina = palazzina;
+		this.ruolo = ruolo;
+	}
+	public Palazzina getPalazzina() {
+		return palazzina;
+	}
+	public void setPalazzina(Palazzina palazzina) {
+		this.palazzina = palazzina;
+	}
+	public Ruolo getRuolo() {
+		return ruolo;
+	}
+	public void setRuolo(Ruolo ruolo) {
+		this.ruolo = ruolo;
+	}
 	public int getId() {
 		return id;
 	}
@@ -68,18 +95,6 @@ public class Utente {
 	public void setId_palazzina(int id_palazzina) {
 		this.id_palazzina = id_palazzina;
 	}
-	public Ruolo getRuolo() {
-		return ruolo;
-	}
-	public void setRuolo(Ruolo ruolo) {
-		this.ruolo = ruolo;
-	}
-	public Palazzina getPalazzina() {
-		return palazzina;
-	}
-	public void setPalazzina(Palazzina palazzina) {
-		this.palazzina = palazzina;
-	}
 	public Utente(int id, String nome, String cognome, String telefono, String email, String password,
 			byte[] carta_identita, int id_ruolo, int id_palazzina, Ruolo ruolo, Palazzina palazzina) {
 		super();
@@ -92,18 +107,31 @@ public class Utente {
 		this.carta_identita = carta_identita;
 		this.id_ruolo = id_ruolo;
 		this.id_palazzina = id_palazzina;
-		this.ruolo = ruolo;
-		this.palazzina = palazzina;
 	}
 	public Utente() {
 		super();
 	}
+	
+	public Utente(String nome, String cognome, String telefono, String email, String password,
+			byte[] carta_identita, int id_ruolo, int id_palazzina) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.telefono = telefono;
+		this.email = email;
+		this.password = password;
+		this.carta_identita = carta_identita;
+		this.id_ruolo = id_ruolo;
+		this.id_palazzina = id_palazzina;
+	}
+	
+	
+
 	@Override
 	public String toString() {
 		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", telefono=" + telefono + ", email="
 				+ email + ", password=" + password + ", carta_identita=" + Arrays.toString(carta_identita)
-				+ ", id_ruolo=" + id_ruolo + ", id_palazzina=" + id_palazzina + ", ruolo=" + ruolo + ", palazzina="
-				+ palazzina + "]";
+				+ ", id_ruolo=" + id_ruolo + ", id_palazzina=" + id_palazzina  + "]";
 	}
 	
 	

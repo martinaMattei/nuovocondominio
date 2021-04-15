@@ -5,9 +5,10 @@
 
 <mapper namespace="it.exolab.mapper.UtenteMapper">
 
-	<resultMap type="Utente" id="utenteNomeRuolo">
+	<resultMap type="it.exolab.model.Utente" id="utenteNomeRuolo">
 
 		<result property="id" column="id" />
+		<result property="id_palazzina" column="id_palazzina" />
 		<result property="nome" column="nome" />
 		<result property="cognome" column="cognome" />
 		<result property="telefono" column="telefono" />
@@ -15,16 +16,17 @@
 		<result property="password" column="password" />
 		<result property="carta_identita" column="carta_identita" />
 		<result property="id_ruolo" column="id_ruolo" />
-		<result property="id_palazzina" column="id_palazzina" />
+		
 
-		<association property="ruolo" javaType="Ruolo">
+		<association property="ruolo"
+			javaType="it.exolab.model.Ruolo">
 			<id property="id" column="id_ruolo" />
-			<result property="id" column="ruolo_id" />
 			<result property="nome" column="ruolo_nome" />
 		</association>
 	</resultMap>
 
-	<resultMap type="Utente" id="utenteNomePalazzo">
+	<resultMap type="it.exolab.model.Utente"
+		id="utenteNomePalazzo">
 
 		<result property="id" column="id" />
 		<result property="nome" column="nome" />
@@ -36,35 +38,36 @@
 		<result property="id_ruolo" column="id_ruolo" />
 		<result property="id_palazzina" column="id_palazzina" />
 
-		<association property="palazzina" javaType="Palazzina">
+		<association property="palazzina"
+			javaType="it.exolab.model.Palazzina">
 			<id property="id" column="id_palazzina" />
-			<result property="id" column="palazzina_id" />
 			<result property="nome" column="palazzina_nome" />
 		</association>
 	</resultMap>
 
 
-	<insert id="insert" parameterType="Utente"
+	<insert id="insert" parameterType="it.exolab.model.Utente"
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		insert into utenti
-		(nome, cognome, telefono, email, password, carta_identita, id_ruolo,
-		id_palazzina) values (#{nome}
+		(id_palazzina, nome, cognome, telefono, email, password, carta_identita, id_ruolo 
+		) values ( #{id_palazzina}
+		, #{nome}
 		, #{cognome}
+		, #{telefono}
 		, #{email}
 		, #{password}
-		,
-		#{carta_identita}
-		,#{id_ruolo}
-		,#{id_palazzina}
+		, #{carta_identita}
+		, #{id_ruolo}
 		)
 
 	</insert>
 
 
 
-	<update id="update" parameterType="Utente">
+	<update id="update" parameterType="it.exolab.model.Utente">
 		update utenti set nome=#{nome}
 		,cognome= #{cognome}
+		,telefono= #{telefono}
 		,email=#{email}
 		,password=#{password}
 		,carta_identita=#{carta_identita}
@@ -91,31 +94,34 @@
 	</select>
 
 
-	<select id="findAll" resultType="Utente">
+	<select id="findAll" resultType="it.exolab.model.Utente">
 		SELECT * FROM utenti
 	</select>
 
 
-	<select id="findByEmailPassword" parameterType="Utente">
+	<select id="findByEmailPassword" parameterType="it.exolab.model.Utente">
 		SELECT *
-		FROM utenti where email = #{email} and password =
+		FROM
+		utenti where email = #{email} and password =
 		#{password}
 	</select>
 
 
 
 
-	<select id="findByNomeRuolo" resultMap="uteneNomeRuolo">
+	<select id="findByNomeRuolo" resultMap="utenteNomeRuolo">
 		SELECT
-		u.nome,u.cognome,r.nome as ruolo_nome,r.id as ruolo_id
+		u.nome,u.cognome,r.nome as ruolo_nome,r.id as id_ruolo
 		from utenti u
 		inner join ruolo r
 		on u.id_ruolo=r.id
 		order by r.id asc
 	</select>
+
+
 	<select id="findByNomePalazzo" resultMap="utenteNomePalazzo">
 		SELECT
-		u.nome,u.cognome,p.nome as palazzina_nome,p.id as palazzina_id
+		u.nome,u.cognome,p.nome as palazzina_nome,p.id as id_palazzina
 		from
 		utenti u
 		inner join palazzina p

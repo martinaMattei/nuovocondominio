@@ -33,6 +33,9 @@ public class Admin {
 		this.email = email;
 		this.password = password;
 	}
+	public Admin() {
+	
+	}
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", email=" + email + ", password=" + password + "]";

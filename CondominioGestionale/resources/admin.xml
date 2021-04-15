@@ -10,7 +10,7 @@
 	</select>
 		
 		
-	<select id = "find" resultType = "it.exolab.model.Prodotto" parameterType="int">
+	<select id = "find" resultType = "it.exolab.model.Admin" parameterType="int">
 		   SELECT * FROM admin  where id = #{id}
 		</select>
 		
