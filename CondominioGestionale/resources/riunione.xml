@@ -8,14 +8,10 @@
 	<insert id="insert" parameterType="it.exolab.model.Riunione"
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		insert into
-		riunioni (id_palazzina, id_votazione, data, motivazione,
-		n_verbale)
+		riunioni (id_palazzina, data, motivazione )
 		values (#{id_palazzina}
-		, #{id_votazione}
 		, #{data}
 		, #{motivazione}
-		,
-		#{n_verbale}
 		)
 
 	</insert>
@@ -26,12 +22,10 @@
 	<update id="update" parameterType="it.exolab.model.Riunione">
 		update riunioni set
 		id_palazzina=#{id_palazzina}
-		,id_votazione= #{id_votazione}
 		,data=#{data}
-		,motivazione=#{motivazione}
 		,n_verbale=#{n_verbale}
 		where
-		id = #{id}
+		data = #{data} and id_palazzina = #{id_palazzina}
 
 	</update>
 
