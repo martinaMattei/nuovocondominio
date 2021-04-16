@@ -66,7 +66,7 @@ public class VotazioneCRUD {
 
 		SqlMapFactory.instance().closeSession();
 
-		return   ret;
+		return  ret;
 
 	}
 
