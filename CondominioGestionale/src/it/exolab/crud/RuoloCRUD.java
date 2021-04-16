@@ -46,6 +46,6 @@ public class RuoloCRUD {
 		Ruolo ret = mapper.findByNome(nome);
 		SqlMapFactory.instance().commitSession();
 		SqlMapFactory.instance().closeSession();
-		return  ret;
+		return ret;
 	}
 }
