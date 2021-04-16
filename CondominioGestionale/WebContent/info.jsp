@@ -6,6 +6,7 @@
     
 <%
 Utente utente = (Utente) session.getAttribute("utente");
+String nominativo = (String) session.getAttribute("nominativo");
 %> 
     
 <!DOCTYPE html>
@@ -16,9 +17,17 @@ Utente utente = (Utente) session.getAttribute("utente");
 </head>
 <body>
 
+
 <h1>Questi sono i tuoi dati :</h1>
 <br/>
 <br/>
+
+<c:if test="${utente.id_ruolo==2}">
+
+ Sei il delegato di : <c:out value= "${nominativo}"></c:out>
+
+</c:if>
+<p>
 Nome : <%= utente.getNome() %>
 <br/>
 Cognome : <%=utente.getCognome()%>
@@ -30,7 +39,7 @@ Email : <%=utente.getEmail()%>
 Palazzina : <%=utente.getId_palazzina()%>
 <br/>
 <br/>
-
+</p>
 
   <a href="home.jsp"> Torna Indietro </a>
 
