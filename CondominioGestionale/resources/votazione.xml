@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="it.exolab.mapper.VotazioneMapper">
+
+	<insert id="insert"
+		parameterType="it.exolab.model.Votazione" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id">
+		insert into votazioni (id_utente, id_riunione,id_preventivo,esito) values (#{id_utente}
+		, #{id_riunione}
+		, #{id_preventivo}
+		, #{esito}
+		)
+
+	</insert>
+
+
+
+	<update id="update"
+		parameterType="it.exolab.model.Votazione">
+		update votazioni set id_utente=#{id_utente}
+		,id_riunione= #{id_riunione}
+		,id_preventivo=#{id_preventivo}
+		,esito=#{esito} where id = #{id}
+
+	</update>
+
+
+
+
+	<delete id="delete" parameterType="int">
+		delete from votazioni where id = #{id}
+	</delete>
+
+
+
+	<select id="find" resultType="it.exolab.model.Votazione"
+		parameterType="int">
+		SELECT * FROM votazioni where id = #{id}
+	</select>
+
+
+	<select id="findAll" resultType="it.exolab.model.Votazione">
+		SELECT * FROM votazioni
+	</select>
+
+
+	
+	
+
+
+
+
+
+</mapper>
