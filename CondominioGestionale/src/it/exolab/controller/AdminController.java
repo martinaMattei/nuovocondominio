@@ -24,9 +24,9 @@ public class AdminController extends BaseController {
 			admin.setPassword(password);
 			admin = admincrud.findByEmailAndPassword(admin);
 
-		} catch (EntityNotFoundException e) {
+		} catch  (EntityNotFoundException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
+		} catch  (Exception e) {
 			e.printStackTrace();
 		}
 

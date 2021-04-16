@@ -8,7 +8,7 @@
 	<insert id="insert"
 		parameterType="it.exolab.model.Votazione" useGeneratedKeys="true"
 		keyProperty="id" keyColumn="id">
-		insert into votazioni (id_utente, id_riunione,id_preventivo,esito) values (#{id_utente}
+		insert into votazioni  (id_utente, id_riunione,id_preventivo,esito) values (#{id_utente}
 		, #{id_riunione}
 		, #{id_preventivo}
 		, #{esito}
