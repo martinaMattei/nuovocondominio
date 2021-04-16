@@ -64,7 +64,7 @@ public class PreventivoCRUD {
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return  ret;
 
 	}
 

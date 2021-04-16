@@ -73,6 +73,6 @@ public class UtenteCRUD {
 		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
 		List<Utente> ret = mapper.findAll();
 		SqlMapFactory.instance().closeSession();
-		return ret;
+		return  ret;
 	}
 }

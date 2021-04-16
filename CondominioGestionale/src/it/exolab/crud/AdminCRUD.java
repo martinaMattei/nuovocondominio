@@ -32,7 +32,7 @@ public class AdminCRUD {
 		SqlMapFactory.instance().commitSession();
 		SqlMapFactory.instance().closeSession();
 		if(admin == null)
-			throw new Exception();
+			throw new  Exception();
 		return admin;
 }
 

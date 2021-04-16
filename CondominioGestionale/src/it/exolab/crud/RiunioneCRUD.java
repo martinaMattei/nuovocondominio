@@ -64,7 +64,7 @@ public class RiunioneCRUD {
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return  ret;
 
 	}
 

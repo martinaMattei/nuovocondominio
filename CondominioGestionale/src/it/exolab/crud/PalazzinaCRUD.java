@@ -38,7 +38,7 @@ public class PalazzinaCRUD {
 		Palazzina palazzina = mapper.findByNome(nome);
 		SqlMapFactory.instance().commitSession();
 		SqlMapFactory.instance().closeSession();
-		return palazzina;
+		return  palazzina;
 	}
         
        
