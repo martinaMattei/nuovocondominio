@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.exolab.controller.AdminController;
 import it.exolab.controller.RiunioneController;
 import it.exolab.controller.UtenteController;
+import it.exolab.model.Utente;
 
 /**
  * Servlet implementation class Servlet
@@ -44,7 +45,7 @@ public class Servlet extends HttpServlet {
 		
 		String op = request.getParameter("op");
 		if(op.equals("login")) {
-			utenteController.login();
+		    utenteController.login();
 			utenteController.redirect();
 		}
 		if(op.equals("loginAdmin")) {
@@ -62,6 +63,10 @@ public class Servlet extends HttpServlet {
 		if(op.equals("regdel")) {
 			utenteController.registrazioneDelegato();
 			utenteController.redirect();
+		}
+		if(op.equals("verbale")) {
+			riunioneController.update();
+			riunioneController.redirectRiunione();
 		}
 	}
 

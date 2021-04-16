@@ -83,6 +83,13 @@ public class Riunione {
 		this.id_palazzina = id_palazzina;
 	}
 	
+	public Riunione(int id_palazzina, Timestamp data, int n_verbale) {
+		super();
+		this.id_palazzina = id_palazzina;
+		this.data = data;
+		this.n_verbale= n_verbale;
+		}
+	
 	@Override
 	public String toString() {
 		return "Riunione [id=" + id + ", id_palazzina=" + id_palazzina + ", id_votazione=" + id_votazione + ", data="
