@@ -47,5 +47,15 @@ public class RiunioneController extends BaseController {
 		request.getSession().setAttribute("riunione", riunione);
 
 	}
+	
+	public void listaRiunioni(){
+		
+		
+		List<Riunione> riunioni = new ArrayList<Riunione>();
+		riunioni = riunionecrud.findAll();
+		
+			
+		request.getSession().setAttribute("riunioni", riunioni);
+	}
 
 }

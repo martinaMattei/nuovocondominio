@@ -27,6 +27,7 @@ public class BaseController {
 	public void redirect() throws ServletException, IOException {
 		
 			Utente utente = (Utente) request.getSession().getAttribute("utente");
+		
 			request.getRequestDispatcher("home.jsp").include(request, response);
 
 	}
@@ -38,6 +39,10 @@ public class BaseController {
 	
 	public void redirectRiunione() throws ServletException, IOException {
 		request.getRequestDispatcher("homeAdmin.jsp").include(request, response);
+	}
+	
+	public void redirectLista() throws ServletException, IOException {
+		request.getRequestDispatcher("listaRiunioni.jsp").include(request, response);
 	}
 
 }

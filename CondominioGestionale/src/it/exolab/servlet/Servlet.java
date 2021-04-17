@@ -68,6 +68,10 @@ public class Servlet extends HttpServlet {
 			riunioneController.update();
 			riunioneController.redirectRiunione();
 		}
+		if(op.equals("view")) {
+			riunioneController.listaRiunioni();
+			riunioneController.redirectLista();
+		}
 	}
 
 }

@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<div class="testo">
-<b>Benvenuto</b>
-</div>
+	<div class="testo">
+		<b>Benvenuto</b>
+	</div>
 	<div class="wrapper">
 		<div class="container">
 			<div class="btn">
@@ -28,6 +28,10 @@
 					<li><a href="riunione.jsp">Crea Riunione</a></li>
 
 
+                    <form action="Servlet?op=view" method="post">
+                    	<input type="submit" value="Visualizza Riunioni">
+                    </form>
+					
 
 
 
@@ -46,10 +50,10 @@
 
 
 	<script>
-		$(document).ready(function(){
-		  	$(".btn").click(function(){
-			  $(this).toggleClass("active");
-			  $(".menu").toggleClass("active");
+		$(document).ready(function() {
+			$(".btn").click(function() {
+				$(this).toggleClass("active");
+				$(".menu").toggleClass("active");
 			});
 		});
 	</script>
