@@ -1,5 +1,36 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import
+	url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap')
+	;
+
+.navbar {
+	width: 100%;
+	background-color: black;
+	overflow: auto;
+}
+
+.logo {
+	color: white;
+	float: left;
+	margin-left: 30px;
+	margin-top: 10px;
+	font-size: 35px;
+	font-family: 'Zilla Slab', serif;
+}
+.active {
+	background-color: none;
+}
+
+.logo {
+	color: white;
+	float: left;
+	font-size: 50px;
+	font-family: 'Zilla Slab', serif;
+}
+.area{
+fort-size: 10px;
+}
 
 * {
 	margin: 0;
@@ -10,7 +41,9 @@
 }
 
 body {
-	background: #757575;
+	background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%,
+		rgba(96, 44, 213, 0.5396533613445378) 0%,
+		rgba(0, 166, 255, 0.24833683473389356) 100%);
 }
 .testo {
 	position: absolute;
@@ -83,7 +116,7 @@ body {
 	padding: 10px;
 	display: block;
 	font-size: 12px;
-	color: #757575;
+	color: black;
 	transition: all 0.2s linear;
 }
 

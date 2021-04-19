@@ -90,6 +90,7 @@ public class Riunione {
 		this.n_verbale= n_verbale;
 		}
 	
+	
 	@Override
 	public String toString() {
 		return "Riunione [id=" + id + ", id_palazzina=" + id_palazzina + ", id_votazione=" + id_votazione + ", data="
