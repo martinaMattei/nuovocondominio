@@ -6,7 +6,7 @@
  
 <%
 List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente"); 
-%>
+%> 
 
 
 <!DOCTYPE html>
