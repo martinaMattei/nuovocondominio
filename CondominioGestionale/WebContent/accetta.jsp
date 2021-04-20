@@ -5,7 +5,7 @@
 <%@ page import="it.exolab.model.Utente"%>
  
 <%
-List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente");
+List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente"); 
 %>
 
 
