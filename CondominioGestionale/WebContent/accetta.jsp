@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.*"%>
 <%@ page import="it.exolab.model.Utente"%>
-
+ 
 <%
 List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente");
 %>
