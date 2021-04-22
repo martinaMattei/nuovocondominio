@@ -16,7 +16,8 @@
 		<result property="password" column="password" />
 		<result property="carta_identita" column="carta_identita" />
 		<result property="id_ruolo" column="id_ruolo" />
-		
+		<result property="accesso" column="accesso" />
+
 
 		<association property="ruolo"
 			javaType="it.exolab.model.Ruolo">
@@ -49,14 +50,40 @@
 	<insert id="insert" parameterType="it.exolab.model.Utente"
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		insert into utenti
-		(id_palazzina, nome, cognome, telefono, email, password, carta_identita, id_ruolo ) values ( #{id_palazzina}
+		(id_palazzina, nome, cognome, telefono, email, password,
+		carta_identita, id_ruolo, accesso ) values ( #{id_palazzina}
 		, #{nome}
 		, #{cognome}
 		, #{telefono}
 		, #{email}
 		, #{password}
 		, #{carta_identita}
+		,
+		#{id_ruolo}
+		,#{accesso}
+
+
+		)
+
+	</insert>
+	<insert id="insertD" parameterType="it.exolab.model.Utente"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into utenti
+		(id_palazzina, nome, cognome, telefono, email, password,
+		carta_identita, id_ruolo, accesso, nominativo ) values (
+		#{id_palazzina}
+		, #{nome}
+		, #{cognome}
+		, #{telefono}
+		, #{email}
+		,
+		#{password}
+		, #{carta_identita}
 		, #{id_ruolo}
+		,#{accesso}
+		,#{nominativo}
+
+
 		)
 
 	</insert>
@@ -74,30 +101,53 @@
 
 	</update>
 
+	<update id="updateAccesso"
+		parameterType="it.exolab.model.Utente">
+		update utenti set accesso=#{accesso}
+		where id=#{id}
+	</update>
 
+	<update id="updateTot" parameterType="it.exolab.model.Utente">
+		update utenti set
+		accesso=#{accesso}
 
+	</update>
+
+	<select id="count" parameterType="it.exolab.model.Utente"
+		resultType="int">
+		select count(*) from utenti where accesso=#{accesso}
+	</select>
 
 	<delete id="delete" parameterType="int">
 		delete from utenti where id =
 		#{id}
 	</delete>
 
+	<delete id="deleteTot" parameterType="int">
+		delete from utenti where
+		accesso =
+		#{accesso}
+	</delete>
 
 
 
-	<select id="find" parameterType="int">
+	<select id="find" parameterType="int"
+		resultType="it.exolab.model.Utente">
 		SELECT * FROM utenti where
 		id =
 		#{id}
 	</select>
 
 
-	<select id="findAll" resultType="it.exolab.model.Utente">
+	<select id="findAll" parameterType="it.exolab.model.Utente"
+		resultType="it.exolab.model.Utente">
 		SELECT * FROM utenti
 	</select>
 
 
-	<select id="findByEmailPassword" parameterType="it.exolab.model.Utente">
+	<select id="findByEmailPassword"
+		parameterType="it.exolab.model.Utente"
+		resultType="it.exolab.model.Utente">
 		SELECT *
 		FROM
 		utenti where email = #{email} and password =
