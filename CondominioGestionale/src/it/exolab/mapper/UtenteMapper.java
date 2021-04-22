@@ -18,6 +18,7 @@ public interface UtenteMapper {
 
 	public void updateTot(Utente utente);
 
+	
 	public void delete(int id);
 
 	public void deleteTot(int accesso);
