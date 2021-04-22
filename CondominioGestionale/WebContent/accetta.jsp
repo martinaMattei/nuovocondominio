@@ -3,10 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.*"%>
 <%@ page import="it.exolab.model.Utente"%>
- 
+
 <%
-List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente"); 
-%> 
+	List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente");
+String errore = request.getAttribute("avviso") != null ? (String) request.getAttribute("avviso") : "";
+%>
 
 
 <!DOCTYPE html>
@@ -19,36 +20,52 @@ List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente")
 
 
 	<h1>Utenti da accettare</h1>
+	<c:if test="${count==0}">
+		<br />
+		<c:out value="${avviso}"></c:out>
+	</c:if>
 
-	<table width="75%">
-
-
-
-		<tr>
-			<td><b>Nome</b></td>
-			<td><b>Cognome</b></td>
-			<td><b>Palazzina</b></td>
-			<td><b>Ruolo</b></td>
-		</tr>
-
-		<c:forEach var="u" items="${utente}">
-			<c:if test="${u.accesso==0}">
-
-				<tr>
-					<td><c:out value="${u.nome }" /></td>
-					<td><c:out value="${u.cognome}" /></td>
-					<td><c:out value="${u.id_palazzina}" /></td>
-					<td><c:if test="${u.id_ruolo==1}"> Rappresentante </c:if> <c:if test="${u.id_ruolo==2}"> Delegato di <c:out value="${u.nominativo}"/></c:if></td>
-					<td><a href="Servlet?op=si&id=<c:out value="${u.id}"/>"><button>Accetta</button></a></td>
-					<td><a href="Servlet?op=no&id=<c:out value="${u.id}"/>"><button>Cancella</button></a></td>
-				</tr>
-			</c:if>
-		</c:forEach>
+	<c:if test="${count!=0}">
+		<table width="75%">
 
 
 
-	</table>
-	<br />
+			<tr>
+				<td><b>Nome</b></td>
+				<td><b>Cognome</b></td>
+				<td><b>Ruolo</b></td>
+				<td><b>Palazzina</b></td>
+			</tr>
+
+			<c:forEach var="u" items="${utente}">
+				<c:if test="${u.accesso==0}">
+
+					<tr>
+						<td><c:out value="${u.nome }" /></td>
+						<td><c:out value="${u.cognome}" /></td>
+
+						<td><c:if test="${u.id_ruolo==1}"> Rappresentante </c:if> <c:if
+								test="${u.id_ruolo==2}"> Delegato di <c:out
+									value="${u.nominativo}" />
+							</c:if></td>
+						<td><c:out value="${u.id_palazzina}" /></td>
+						<td><a href="Servlet?op=si&id=<c:out value="${u.id}"/>"><button>Accetta</button></a></td>
+						<td><a href="Servlet?op=no&id=<c:out value="${u.id}"/>"><button>Cancella</button></a></td>
+
+					</tr>
+				</c:if>
+			</c:forEach>
+
+
+
+
+
+
+		</table>
+		<br />
+		<a href="Servlet?op=cancTot"><button>Cancella tutti</button></a>
+		<a href="Servlet?op=accettaTot"><button>Accetta tutti</button></a>
+	</c:if>
 	<a href="homeAdmin.jsp"> Torna Indietro </a>
 
 </body>
