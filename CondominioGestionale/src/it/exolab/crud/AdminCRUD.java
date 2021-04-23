@@ -5,7 +5,7 @@ import it.exolab.mapper.SqlMapFactory;
 import it.exolab.model.Admin;
 
 public class AdminCRUD {
-	
+	 
 	
 	public Admin find(int id){
 		

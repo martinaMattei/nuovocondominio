@@ -11,7 +11,7 @@ public class AdminController extends BaseController {
 	public AdminController(HttpServletRequest request, HttpServletResponse response) {
 		super(request, response);
 	}
-
+ 
 	public Admin login() {
 
 		Admin admin = new Admin();
@@ -20,16 +20,19 @@ public class AdminController extends BaseController {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 
+			
 			admin.setEmail(email);
 			admin.setPassword(password);
 			admin = admincrud.findByEmailAndPassword(admin);
+			System.out.println(admin);
 
-		} catch  (EntityNotFoundException e) {
+		} catch (EntityNotFoundException e) {
 			e.printStackTrace();
 		} catch  (Exception e) {
 			e.printStackTrace();
 		}
-
+		request.getSession().setAttribute("admin", admin);
+		System.out.println(admin);
 		return admin;
 	}
 }

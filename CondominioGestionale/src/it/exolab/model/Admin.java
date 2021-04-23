@@ -2,7 +2,7 @@ package it.exolab.model;
 
 public class Admin {
 	private int id;
-	private String email;
+	private String email; 
 	private String password;
 	public int getId() {
 		return id;
