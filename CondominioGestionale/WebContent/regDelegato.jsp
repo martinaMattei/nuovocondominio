@@ -60,7 +60,8 @@
 
 			</p>
 			<p>
-				Carta d'identit&agrave;<input type="file" name="file2" />
+				<input type="hidden" name="MAX_FILE_SIZE" value="30000" id="uploadfile" />
+			Carta d'identit&agrave;<input type="file" name="file2" />
 			</p>
 			<p>
 				<i class="fa fa-user-circle" aria-hidden="true"></i> Delegato di : <input
