@@ -3,20 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="it.exolab.ecommerce.mapper.PreventivoMapper">
+<mapper namespace="it.exolab.mapper.PreventivoMapper">
 
-	<insert id="insert" parameterType="it.exolab.model.Preventivo"
+	<insert id="insertA" parameterType="it.exolab.model.Preventivo"
 		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-		insert into preventivi(id_riunione, id_utente, id_admin, testo) values
-		(#{id_riunione}
-		, #{id_utente}
-		, #{id_admin}
-		, #{testo}
+		insert into preventivi( id_admin, testo, id_palazzina) values
+		( #{id_admin}
+		 , #{testo}
+		 ,#{id_palazzina}
 		)
 
 	</insert>
 
+    <insert id="insertU" parameterType="it.exolab.model.Preventivo"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into preventivi( id_utente, testo, id_palazzina, nominativo) values
+		( #{id_utente}
+		 , #{testo}
+		 ,#{id_palazzina}
+		 ,#{nominativo}
+		)
 
+	</insert>
 
 	<update id="update" parameterType="it.exolab.model.Preventivo">
 		update preventivi set id_riunione=#{id_riunione}
@@ -34,7 +42,10 @@
 		delete from preventivi where id = #{id}
 	</delete>
 
-
+<select id="findPalazzina" resultType="it.exolab.model.Preventivo"
+		parameterType="int">
+		SELECT * FROM preventivi where id_palazzina= #{id_palazzina}
+	</select>
 
 
 	<select id="find"

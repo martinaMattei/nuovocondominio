@@ -4,23 +4,28 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Aggiungi Preventivo</title>
+<title>Aggiungi preventivo</title>
 </head>
-<body>
+
 
 <h1>AGGIUNGI PREVENTIVO</h1>
 <br/>
-<form action="Servlet?op=aggprev" method="post">
+<form action="Servlet?op=aggprevUtente" method="post">
 
-<h3>Preventivo per la palazzina numero:</h3>
-<input type="text" name="id_palazzina" id="pl" placeholder="Numero palazzina">
-<br/>
+
+
 <h3>Scrivi il testo: </h3>
 <textarea name="testo" rows="5" cols="40" placeholder="Scrivi il preventivo"> </textarea>
 <br/>
 <button class="btn">AGGIUNGI PREVENTIVO</button>
 </form>
 <br/>
-<a href="Servlet?op=listaPrev">Torna Indietro</a>
+
+<a href="Servlet?op=listaPrevUtente&id_palazzina=<c:out value="${utente.id_palazzina}"/>"> Torna Indietro</a>
+
+
+
+<body>
+
 </body>
 </html>

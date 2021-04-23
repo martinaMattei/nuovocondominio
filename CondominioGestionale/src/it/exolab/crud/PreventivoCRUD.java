@@ -4,18 +4,30 @@ import java.util.List;
 
 import it.exolab.mapper.PreventivoMapper;
 import it.exolab.mapper.SqlMapFactory;
+import it.exolab.mapper.UtenteMapper;
 import it.exolab.model.Preventivo;
 import it.exolab.model.Utente;
 
 public class PreventivoCRUD {
 
 	
-	public void insert(Preventivo preventivo) {
+	public void insertA(Preventivo preventivo) {
 		SqlMapFactory.instance().openSession();
 
 		PreventivoMapper mapper = SqlMapFactory.instance().getMapper(PreventivoMapper.class);
 
-		mapper.insert(preventivo);
+		
+		mapper.insertA(preventivo);
+		SqlMapFactory.instance().commitSession();
+		SqlMapFactory.instance().closeSession();
+	}
+	
+	public void insertU(Preventivo preventivo) {
+		SqlMapFactory.instance().openSession();
+
+		PreventivoMapper mapper = SqlMapFactory.instance().getMapper(PreventivoMapper.class);
+
+		mapper.insertU(preventivo);
 		SqlMapFactory.instance().commitSession();
 		SqlMapFactory.instance().closeSession();
 	}
@@ -53,6 +65,15 @@ public class PreventivoCRUD {
 		SqlMapFactory.instance().closeSession();
 		return ret;
 
+	}
+	
+	
+	public List<Preventivo> findPalazzina(int id_palazzina) throws Exception {
+		SqlMapFactory.instance().openSession();
+		PreventivoMapper mapper = SqlMapFactory.instance().getMapper(PreventivoMapper.class);
+		List<Preventivo> ret = mapper.findPalazzina(id_palazzina);
+		SqlMapFactory.instance().closeSession();
+		return ret;
 	}
 	
 	public List<Preventivo> findAll() {
