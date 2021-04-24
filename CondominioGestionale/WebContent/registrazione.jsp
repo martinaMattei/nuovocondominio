@@ -7,88 +7,152 @@
 <head>
 
 <title>Registrazione</title>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
 <link rel="stylesheet" href="registrazione.css">
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <script type="text/javascript">
-	var pwd = document.getElementById('pwd');
-	var eye = document.getElementById('eye');
+	function validation() {
 
-	eye.addEventListener('click', togglePass);
-
-	function togglePass() {
-		eye.classList.toggle('active');
-		(pwd.type == 'password') ? pwd.type = 'pwd' : pwd.type = 'password';
-
-	}
-
-	function valida() {
-
-		var nome = document.invio.nome.value;
-		var cognome = document.invio.cognome.value;
-		var telefono = document.invio.telefono.value;
-		var id_palazzina = document.invio.id_palazzina.value;
-		var email = document.invio.email.value;
-		var password = document.invio.password.value;
-		var conferma = document.invio.conferma.value;
-		var file2 = document.invio.file2.value;
-
+		var nome = document.getElementById("name").value;
+		var cognome = document.getElementById("sname").value;
+		var telefono = document.getElementById("tel").value;
+		var id_palazzina = document.getElementById("pl").value;
+		var email = document.getElementById("mail").value;
+		var password = document.getElementById("pwd").value;
+		var conferma = document.getElementById("conf").value;
+		var file = document.getElementById("upfile").value;
 		var nome_valid = /^[a-zA-Z]*$/;
-		if (!nome_valid.test(nome) || (nome.length <= 2) || (nome == "")
-				|| (nome == "undefined")) {
-			alert("Inserisci un nome valido");
-			document.invio.nome.focus();
-			return false;
-		}
 		var cognome_valid = /^[a-zA-Z]*$/;
-		if (!cognome_valid.test(cognome) || (cognome == "")
-				|| (cognome == "undefined")) {
-			alert("Inserisci un cognome valido");
-			document.invio.cognome.focus();
+		var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+
+		if (nome == "") {
+			document.getElementById('spanname').style.color = "red";
+			document.getElementById('spanname').innerHTML = " Inserisci un nome";
 			return false;
+		} else {
+			document.getElementById('spanname').innerHTML = " ";
 		}
-		if ((isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
-			alert("Devi inserire il telefono, attenzione deve essere numerico!");
-			document.invio.telefono.value = "";
-			document.invio.telefono.focus();
+		if (!nome_valid.test(nome)) {
+			document.getElementById('spanname').style.color = "red";
+			document.getElementById('spanname').innerHTML = " Inserisci un nome valido";
 			return false;
+		} else {
+			document.getElementById('spanname').innerHTML = " ";
+		}
+		if (cognome == "") {
+			document.getElementById('spansname').style.color = "red";
+			document.getElementById('spansname').innerHTML = " Inserisci un cognome";
+			return false;
+		}else{
+			document.getElementById('spansname').innerHTML = " ";
+		}
+		if (!cognome_valid.test(cognome)) {
+			document.getElementById('spansname').style.color = "red";
+			document.getElementById('spansname').innerHTML = " Inserisci un cognome valido";
+			return false;
+		}else{
+			document.getElementById('spansname').innerHTML = " ";
+		}
+		if (telefono == "") {
+			document.getElementById('spantel').style.color = "red";
+			document.getElementById('spantel').innerHTML = " Inserisci un telefono";
+			return false;
+		}else{
+			document.getElementById('spantel').innerHTML = " ";
+		}
+		if (isNaN(telefono)) {
+			document.getElementById('spantel').style.color = "red";
+			document.getElementById('spantel').innerHTML = " Inserisci solo caratteri numerici";
+			return false;
+		}else{
+			document.getElementById('spantel').innerHTML = " ";
+		}
+		if (telefono.length != 10) {
+			document.getElementById('spantel').style.color = "red";
+			document.getElementById('spantel').innerHTML = " Il numero di telefono deve avere 10 cifre";
+			return false;
+		}else{
+			document.getElementById('spantel').innerHTML = " ";
 		}
 		if (id_palazzina == "") {
-			alert("Inserisci il tuo palazzo");
-			document.invio.id_palazzina.focus();
+			document.getElementById('spanpl').style.color = "red";
+			document.getElementById('spanpl').innerHTML = " Inserisci la tua palazzina";
 			return false;
+		}else{
+			document.getElementById('spanpl').innerHTML = " ";
+		}
+		if ((id_palazzina < 1) || (id_palazzina > 3)) {
+			document.getElementById('spanpl').style.color = "red";
+			document.getElementById('spanpl').innerHTML = " Le palazzine vanno da 1 a 3!";
+			return false;
+		}else{
+			document.getElementById('spanpl').innerHTML = " ";
+		}
+		if (email == "") {
+			document.getElementById('spanmail').style.color = "red";
+			document.getElementById('spanmail').innerHTML = " Inserisci una email";
+			return false;
+		}else{
+			document.getElementById('spanmail').innerHTML = " ";
+		}
+		if (email.indexOf('@') <= 0) {
+			document.getElementById('spanmail').style.color = "red";
+			document.getElementById('spanmail').innerHTML = " Email non valida";
+			return false;
+		}else{
+			document.getElementById('spanmail').innerHTML = " ";
+		}
+		if ((email.charAt(email.length - 4) != '.')
+				&& (email.charAt(email.length - 3) != '.')) {
+			document.getElementById('spanmail').style.color = "red";
+			document.getElementById('spanmail').innerHTML = " Email non valida";
+			return false;
+		}else{
+			document.getElementById('spanmail').innerHTML = " ";
+		}
+		if (password == "") {
+			document.getElementById('spanpwd').style.color = "red";
+			document.getElementById('spanpwd').innerHTML = " Inserisci una password";
+			return false;
+		}else{
+			document.getElementById('spanpwd').innerHTML = " ";
+		}
+		if ((password.length < 8) || (password.length > 20)) {
+			document.getElementById('spanpwd').style.color = "red";
+			document.getElementById('spanpwd').innerHTML = " La password deve avere tra 8 e 20 caratteri";
+			return false;
+		}else{
+			document.getElementById('spanpwd').innerHTML = " ";
 		}
 
-		var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
-		if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
-			alert("Inserisci un indirizzo email corretto");
-			document.invio.email.focus();
+		if (conferma == "") {
+			document.getElementById('spanconf').style.color = "red";
+			document.getElementById('spanconf').innerHTML = " Conferma la password";
 			return false;
-		}
-		if (password.length < 8 || (password == "")
-				|| (password == "undefined")) {
-			alert("Scegli una password, minimo 8 caratteri");
-			document.invio.password.focus();
-			return false;
-		}
-
-		if ((conferma == "") || (conferma == "undefined")) {
-			alert("Conferma la password");
-
-			document.invio.conferma.focus();
-			return false;
+		}else{
+			document.getElementById('spanconf').innerHTML = " ";
 		}
 		if (password != conferma) {
-			alert("Le password non corrispondono");
-			document.invio.conferma.focus();
+			document.getElementById('spanconf').style.color = "red";
+			document.getElementById('spanconf').innerHTML = " Le password non corrispondono";
 			return false;
+		}else{
+			document.getElementById('spanconf').innerHTML = " ";
 		}
-		if (file2 == "") {
-			alert("Carica immagine")
-		} else {
-			document.invio.action = "Servlet?op=reg";
-			document.invio.submit();
+		if (file == "") {
+			document.getElementById('spanfile').style.color = "red";
+			document.getElementById('spanfile').innerHTML = " Inserisci la carta d'identità";
+			return false;
 		}
 
 	}
@@ -101,46 +165,67 @@
 	<div class="regbox">
 		<img src="images/avatar.png" class="avatar">
 		<h1>Registrazione</h1>
-		<form action="Servlet?op=reg" method="post" name="invio" enctype="multipart/form-data">
+		<form action="Servlet?op=reg" method="post" name="invio"
+			enctype="multipart/form-data" onsubmit="return validation()">
 			<p>
-				<i class="fa fa-user-circle" aria-hidden="true"></i> Nome *<input
-					type="text" name="nome" placeholder="Nome">
-			</p>
-			<p>
-				<i class="fa fa-user-circle" aria-hidden="true"></i> Cognome *<input
-					type="text" name="cognome" placeholder="Cognome">
+				<i class="fa fa-user-circle" aria-hidden="true"></i> 
+				Nome * 
+				<span id="spanname" class="text-danger font-weight-bold"></span> 
+				<input type="text" name="nome" id="name" placeholder="Nome">
+
 
 			</p>
 			<p>
-				<i class="fa fa-phone-square" aria-hidden="true"></i> Telefono *<input
-					type="text" name="telefono" id="tel" placeholder="Telefono">
+				<i class="fa fa-user-circle" aria-hidden="true"></i> 
+				Cognome * 
+				<span id="spansname" class="text-danger font-weight-bold"></span> 
+				<input type="text" name="cognome" id="sname" placeholder="Cognome">
+
 			</p>
 			<p>
-				<i class="fa fa-address-card-o" aria-hidden="true"></i> Palazzo *<input
-					type="text" name="id_palazzina" id="pl"
-					placeholder="Numero palazzina">
+				<i class="fa fa-phone-square" aria-hidden="true"></i>
+				 Telefono * 
+				 <span id="spantel" class="text-danger font-weight-bold"></span> 
+				 <input type="text" name="telefono" id="tel" placeholder="Telefono">
+
 			</p>
 			<p>
-				<i class="fa fa-envelope" aria-hidden="true"></i> Email *<input
-					type="email" name="email" placeholder="Email" required
-					autocomplete="off">
-			</p>
-			<input type="hidden" name="loginregistrazione" value="registrazione" />
-			<p>
-				<i class="fa fa-key" aria-hidden="true"></i><i class="fa fa-eye"
-					id="eye"></i> Password *<input type="password" id="pwd"
-					name="password" placeholder="Password" required autocomplete="off">
+				<i class="fa fa-address-card-o" aria-hidden="true"></i> 
+				Palazzo * <span id="spanpl" class="text-danger font-weight-bold"></span> 
+				<input type="text" name="id_palazzina" id="pl" placeholder="Numero palazzina">
+
 			</p>
 			<p>
-				<i class="fa fa-key" aria-hidden="true"></i>Conferma Password *<input
-					type="password" name="conferma" placeholder="Conferma password">
+				<i class="fa fa-envelope" aria-hidden="true"></i>
+				 Email * 
+				 <span id="spanmail" class="text-danger font-weight-bold"></span> 
+				 <input type="email" name="email" id="mail" placeholder="Email" autocomplete="off">
+
 			</p>
-			<input type="hidden" name="MAX_FILE_SIZE" value="30000" id="uploadfile" />
-			Carta d'identit&agrave;<input type="file" name="file2" />
-			
-			<input class="btn" type="submit" value="Registrati"
-				onclick="valida()"> <br /> <input class="btn" type="reset"
-				value="Reset"> <br />
+			<p>
+				<i class="fa fa-key" aria-hidden="true"></i><i class="fa fa-eye"id="eye"></i> 
+					Password * 
+					<span id="spanpwd" class="text-danger font-weight-bold"></span> 
+					<input type="password" id="pwd" name="password" placeholder="Password" autocomplete="off">
+
+			</p>
+			<p>
+				<i class="fa fa-key" aria-hidden="true"></i> 
+				Conferma Password * 
+				<span id="spanconf" class="text-danger font-weight-bold"></span> 
+				<input type="password" name="conferma" id="conf" placeholder="Conferma password">
+
+			</p>
+			<p>
+				<input type="hidden" name="MAX_FILE_SIZE" value="30000" id="uploadfile" /> 
+				Carta d'identit&agrave; 
+				<span id="spanfile" class="text-danger font-weight-bold"></span> 
+				<input type="file" name="file2" id="upfile" />
+
+			</p>
+			<input class="btn" type="submit" value="Registrati"> <br />
+
+			<input class="btn" type="reset" value="Reset"> <br />
 			<p>
 				<a href="login.jsp"> Hai gi&agrave un Account? Accedi </a>
 			<p>
@@ -149,6 +234,17 @@
 		</form>
 	</div>
 
+	<script>
+		var pwd = document.getElementById('pwd');
+		var eye = document.getElementById('eye');
 
+		eye.addEventListener('click', togglePass);
+
+		function togglePass() {
+			eye.classList.toggle('active');
+			(pwd.type == 'password') ? pwd.type = 'pwd' : pwd.type = 'password';
+
+		}
+	</script>
 </body>
 </html>
