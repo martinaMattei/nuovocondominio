@@ -13,124 +13,70 @@ List<Utente> utente = (List<Utente>) request.getSession().getAttribute("utente")
 <!DOCTYPE html>
 <html>
 <head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="listaUtenti.css">
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <title>Utenti</title>
 </head>
 <body>
 
+<nav class="navbar">
 
-	<h1 align="center">Utenti</h1>
-	<br />
-	<br />
+		<h1 class="logo">Condominio</h1>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm">
+	</nav>
+	
+	<h2>Utenti</h2>
+	
+	
+	
+	<div class="filter">
 
-				<h5>Palazzina 1</h5>
-				<br />
-				<table width="75%">
-					<tr>
-						<td><b>Nome</b></td>
-						<td><b>Cognome</b></td>
-						<td><b>Ruolo</b></td>
-					</tr>
+	
+
+	<table>
+<tr>
+	<th>Nome</th>
+	<th>Cognome</th>
+	<th>Palazzina</th>
+	<th>Ruolo</th>
+	<th>Opzioni</th>
+</tr>
+	<tr>
 
 					<c:forEach var="u" items="${utente}">
-						<c:if test="${u.id_palazzina==1}">
+						
 							<c:if test="${u.accesso==1}">
 
 								<tr>
 									<td><c:out value="${u.nome }" /></td>
 									<td><c:out value="${u.cognome}" /></td>
+									<td><c:out value="${u.id_palazzina}"></c:out>
 									<td><c:if test="${u.id_ruolo==1}"> Rappresentante </c:if>
 										<c:if test="${u.id_ruolo==2}"> Delegato di <c:out
 												value="${u.nominativo}" />
 										</c:if></td>
 									<td><a
-										href="Servlet?op=blocca&id=<c:out value="${u.id}"/>"><button>Blocca</button></a></td>
-									<td><a href="Servlet?op=canc&id=<c:out value="${u.id}"/>"><button>Cancella</button></a></td>
+										href="Servlet?op=blocca&id=<c:out value="${u.id}"/>"><button class="button">Blocca</button></a>
+									<a href="Servlet?op=canc&id=<c:out value="${u.id}"/>"><button class="button">Cancella</button></a></td>
 								</tr>
 							</c:if>
-						</c:if>
+					
 					</c:forEach>
-				</table>
+					</tr>
+				</table> 
+		  
                <br />
-	          <a href="homeAdmin.jsp"> Torna Indietro </a>
-			</div>
-			<div class="col-sm">
-
-				<h5>Palazzina 2</h5>
-				<br />
-				<table width="75%">
-					<tr>
-						<td><b>Nome</b></td>
-						<td><b>Cognome</b></td>
-						<td><b>Ruolo</b></td>
-					</tr>
-
-					<c:forEach var="u" items="${utente}">
-						<c:if test="${u.id_palazzina==2}">
-							<c:if test="${u.accesso==1}">
-
-								<tr>
-									<td><c:out value="${u.nome }" /></td>
-									<td><c:out value="${u.cognome}" /></td>
-									<td><c:if test="${u.id_ruolo==1}"> Rappresentante </c:if>
-										<c:if test="${u.id_ruolo==2}"> Delegato di <c:out
-												value="${u.nominativo}" />
-										</c:if></td>
-									<td><a
-										href="Servlet?op=blocca&id=<c:out value="${u.id}"/>"><button>Blocca</button></a></td>
-									<td><a href="Servlet?op=canc&id=<c:out value="${u.id}"/>"><button>Cancella</button></a></td>
-								</tr>
-							</c:if>
-						</c:if>
-					</c:forEach>
-				</table>
-
-			</div>
-			<div class="col-sm">
-
-				<h5>Palazzina 3</h5>
-				<br />
-				<table width="75%">
-					<tr>
-						<td><b>Nome</b></td>
-						<td><b>Cognome</b></td>
-						<td><b>Ruolo</b></td>
-					</tr>
-
-					<c:forEach var="u" items="${utente}">
-						<c:if test="${u.id_palazzina==3}">
-							<c:if test="${u.accesso==1}">
-
-								<tr>
-									<td><c:out value="${u.nome }" /></td>
-									<td><c:out value="${u.cognome}" /></td>
-									<td><c:if test="${u.id_ruolo==1}"> Rappresentante </c:if>
-										<c:if test="${u.id_ruolo==2}"> Delegato di <c:out
-												value="${u.nominativo}" />
-										</c:if></td>
-									<td><a
-										href="Servlet?op=blocca&id=<c:out value="${u.id}"/>"><button>Blocca</button></a></td>
-									<td><a href="Servlet?op=canc&id=<c:out value="${u.id}"/>"><button>Cancella</button></a></td>
-								</tr>
-							</c:if>
-						</c:if>
-					</c:forEach>
-				</table>
-			   
-			</div>
-		</div>
-	</div>
-	
-	
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+            
+            <a href="homeAdmin.jsp"><button class="btn"><i class="fa fa-home" aria-hidden="true"></i></button> </a>    
+	    
 
 </body>
+
 </html>

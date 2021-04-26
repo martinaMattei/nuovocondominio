@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap')
+	;
+
+.navbar {
+	width: 100%;
+	background-color: black;
+	overflow: auto;
+	height: 70px;
+}
+
+.logo {
+	color: white;
+	float: left;
+	margin-left: 30px;
+	margin-top: 10px;
+	font-family: 'Zilla Slab', serif;
+	font-size: 50px;
+}
+
+h2 {
+	text-align: center;
+	text-transform: uppercase;
+	color: black;
+	margin-top: 100px;
+	font-size: 35px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+.filter {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	opacity: .7;
+}
+
+body {
+	background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%,
+		rgba(96, 44, 213, 0.5396533613445378) 0%,
+		rgba(0, 166, 255, 0.24833683473389356) 100%);
+}
+
+table {
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 60%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+	border-radius: 12px 12px 0 0;
+	overflow: hidden;
+}
+
+td, th {
+	padding: 15px 20px;
+	text-align: center;
+}
+
+th {
+	background-color: #ba68c8;
+	color: #fafafa;
+	font-family: 'Open Sans', Sans-serif;
+	font-weight: 200;
+	text-transform: uppercase;
+}
+
+tr {
+	width: 100%;
+	background-color: #fafafa;
+	font-family: 'Montserrat', sans-serif;
+}
+
+tr:nth-child(even) {
+	background-color: #eeeeee;
+}
+
+.button {
+	cursor: pointer;
+}
+
+.btn {
+	float: right;
+	margin-right: 40px;
+	font-size: 40px;
+	color: white;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
