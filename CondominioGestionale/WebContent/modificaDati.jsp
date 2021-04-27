@@ -33,6 +33,7 @@ String nominativo = (String) session.getAttribute("nominativo");
 		}else{
 			document.getElementById('spantel').innerHTML = " ";
 		}
+		
 		if (isNaN(telefono)) {
 			document.getElementById('spantel').style.color = "red";
 			document.getElementById('spantel').innerHTML = " Inserisci solo caratteri numerici";
@@ -40,12 +41,15 @@ String nominativo = (String) session.getAttribute("nominativo");
 		}else{
 			document.getElementById('spantel').innerHTML = " ";
 		}
+		
 		if (telefono.length != 10) {
 			document.getElementById('spantel').style.color = "red";
 			document.getElementById('spantel').innerHTML = " Il numero di telefono deve avere 10 cifre";
 			return false;
 		}else{
 			document.getElementById('spantel').innerHTML = " ";
+		}
+		
 			if (email == "") {
 				document.getElementById('spanmail').style.color = "red";
 				document.getElementById('spanmail').innerHTML = " Inserisci una email";
@@ -53,6 +57,7 @@ String nominativo = (String) session.getAttribute("nominativo");
 			}else{
 				document.getElementById('spanmail').innerHTML = " ";
 			}
+			
 			if (email.indexOf('@') <= 0) {
 				document.getElementById('spanmail').style.color = "red";
 				document.getElementById('spanmail').innerHTML = " Email non valida";
@@ -60,6 +65,7 @@ String nominativo = (String) session.getAttribute("nominativo");
 			}else{
 				document.getElementById('spanmail').innerHTML = " ";
 			}
+			
 			if ((email.charAt(email.length - 4) != '.')
 					&& (email.charAt(email.length - 3) != '.')) {
 				document.getElementById('spanmail').style.color = "red";
@@ -68,6 +74,7 @@ String nominativo = (String) session.getAttribute("nominativo");
 			}else{
 				document.getElementById('spanmail').innerHTML = " ";
 			}
+			
 			if (password == "") {
 				document.getElementById('spanpwd').style.color = "red";
 				document.getElementById('spanpwd').innerHTML = " Inserisci una password";
@@ -75,6 +82,7 @@ String nominativo = (String) session.getAttribute("nominativo");
 			}else{
 				document.getElementById('spanpwd').innerHTML = " ";
 			}
+			
 			if ((password.length < 8) || (password.length > 20)) {
 				document.getElementById('spanpwd').style.color = "red";
 				document.getElementById('spanpwd').innerHTML = " La password deve avere tra 8 e 20 caratteri";
@@ -90,6 +98,7 @@ String nominativo = (String) session.getAttribute("nominativo");
 			}else{
 				document.getElementById('spanconf').innerHTML = " ";
 			}
+			
 			if (password != conferma) {
 				document.getElementById('spanconf').style.color = "red";
 				document.getElementById('spanconf').innerHTML = " Le password non corrispondono";
@@ -111,33 +120,34 @@ String nominativo = (String) session.getAttribute("nominativo");
  Sei il delegato di : <c:out value="${nominativo}"></c:out>
 
 	</c:if>
+	<form action="Servlet?op=modifica&id=<c:out value="${utente.id}"/>" method="post" onsubmit="return validation()" name="invio"  >
 	<p>
-		Nome :  <c:out value="${utente.nome}"></c:out>
+		Nome : <input type="text" readonly name ="nome" value="<c:out value="${utente.nome}"></c:out>">
 		<br /> 
 		<br /> 
-		Cognome :  <c:out value="${utente.cognome}"></c:out>
+		Cognome : <input type="text" readonly name ="cognome" value="<c:out value="${utente.cognome}"></c:out>">
 		<br />
 		<br /> 
-	    Palazzina :  <c:out value="${utente.id_palazzina}"></c:out>
+	    Palazzina :  <input type="text" readonly name ="id_palazzina" value="<c:out value="${utente.id_palazzina}"></c:out>"> 
 		<br /> 
 		<br /> 
-		<form action="Servlet?op=modifica&id=<c:out value="${utente.id}"/>" method="post" onsubmit="return validation()" name="invio" enctype="multipart/form-data"  >
 		
-		Telefono : <span id="spantel" class="text-danger font-weight-bold"></span> 
-				   <input type="text" name="telefono" id="tel" >
+		
+		Telefono * : <span id="spantel" class="text-danger font-weight-bold"></span> 
+				   <input type="text" name="telefono" id="tel" autocomplete="off"  >
 		<br />
 		<br /> 
-	    Email : <span id="spanmail" class="text-danger font-weight-bold"></span> 
+	    Email * : <span id="spanmail" class="text-danger font-weight-bold"></span> 
 				 <input type="email" name="email" id="mail" autocomplete="off">
 
 	    <br />
 	    <br />  
-	    Password : 	<span id="spanpwd" class="text-danger font-weight-bold"></span> 
+	    Password * : 	<span id="spanpwd" class="text-danger font-weight-bold"></span> 
 					<input type="password" id="pwd" name="password" autocomplete="off">
 	    <br />
 	    <br /> 
-	    Conferma Password: <span id="spanconf" class="text-danger font-weight-bold"></span> 
-				           <input type="password" name="conferma" id="conf" >
+	    Conferma Password * : <span id="spanconf" class="text-danger font-weight-bold"></span> 
+				           <input type="password" name="conferma" id="conf" autocomplete="off">
 	    <br />
 	    <br /> 
 	    <br /> 
