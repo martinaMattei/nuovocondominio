@@ -1,5 +1,4 @@
 @charset "ISO-8859-1";
-
 @import
 	url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap')
 	;
@@ -30,10 +29,11 @@ h3{
 	color: white;
 	float: left;
 	margin-top: 28px;
-	margin-left: 30px;
+	margin-left: 40px;
 	font-family: 'Zilla Slab', serif;
 	font-size: 30px;
 }
+
 
 * {
 	margin: 0;
@@ -49,17 +49,6 @@ h3{
 	bottom: 0;
 	z-index: 1;
 	opacity: .7;
-}
-.table-filter{
-	position: absolute;
-	margin-left: 100px;
-	width: 300px;
-	height: 20px;
-	margin-top: 40px;
-	background: none;
-	border-color: #4bd664;
-	color: white;
-	font-size: 20px;
 }
 
 body {
@@ -105,6 +94,28 @@ tr:nth-child(even) {
 	background-color: #eeeeee;
 }
 
-.button {
+button {
 	cursor: pointer;
+}
+
+.avviso{
+	text-align: center;
+	color: red;
+	text-transform: uppercase;
+	font-style: bold;
+	font-size: 30px;
+}
+.btn {
+float: right;
+	margin-right: 40px;
+	font-size: 40px;
+	color: white;
+	background: none;
+	border: none;
+	cursor: pointer;
+	
+}
+.tot{
+	text-align: center;
+	
 }
